@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr"><head><title></title>
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">
+  body
+  {
+    background: #fff;
+    padding: 10px 0;
+    margin: 0;
+    min-height: 100%;
+  }
+  #wrapper
+  {
+    padding: 0 10px;
+    margin: 0 auto;
+    width: 970px;
+    border-left: 1px solid grey;
+    border-right: 1px solid grey;
+    background: #CFCFCF;
+    position: relative;
+    height: 100%;
+  }
+  h1
+  {
+    padding-top: 0;
+    margin-top: 0;
+  }
+</style></head><body>
+<div id="wrapper">
+<h1><span style="text-decoration: underline;">VDD commpilation program</span></h1>
+<br>
+<a href="./CompilateurVDD.tar">&gt;Files&lt;</a><br>
+<br>
+<h2>Using the compiler :<br>
+</h2>
+<br>
+<span style="font-weight: bold;">Compilation</span> :<span style="font-family: monospace;"> <big>&nbsp;&nbsp; javac Main.java<br>
+</big></span>or &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  <span style="font-family: mon;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </span><span style="font-family: monospace;"><big>javac -cp . Main.java</big></span>  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <br>
+<br>
+<br>
+<span style="font-weight: bold;">Usage</span> :<span style="font-family: monospace;"> <big>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; java Main [args]<br>
+</big></span>or &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  <span style="font-family: mon;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </span><span style="font-family: monospace;"><big>java -cp . Main [args]</big></span>  &nbsp;&nbsp;  <br>
+<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">arg1</span></span> : file.xml (name of the file to compile)<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">arg2</span></span> : file type : "plus" or "time" (also accepted "p" "t" "+")<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">arg3</span></span> : heuristic number, with 1:MCF, 2:Band-Width, 3:MCS-Inv, 4:Force, 5:MCS+1<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">arg4</span></span> : final form : "AADD", "SLDDp", "SLDDt", "ADD"<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; (<span style="font-family: monospace;"><span style="font-family: mon;">arg5</span></span> : save_file.dot)<br>
+<br>
+<br>
+<br>loading :<span style="font-family: monospace;"> <big>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; java Main [args]<br>
+</big></span>or &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  <span style="font-family: mon;">&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; </span><span style="font-family: monospace;"><big>java -cp . Main [args]</big></span>  &nbsp;&nbsp;  <br>
+
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">arg1</span></span> : file_to_load.dot<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; (<span style="font-family: monospace;"><span style="font-family: mon;">arg2</span></span> : final form : "AADD", "SLDDp", "SLDDt", "ADD" (if nothing, no changement))<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; (<span style="font-family: monospace;"><span style="font-family: mon;">arg3</span></span> :&nbsp;&nbsp;&nbsp; save_file.dot)<br>
+<br>
+<br>
+<h2><span style="font-weight: bold;">Using case</span> :</h2>
+
+&nbsp;&nbsp; <span style="font-family: monospace;"><big>java Main small.xml + 3 SLDDt smallSLDDt.dot</big></span><span style="font-family: mon;"></span><br>
+&nbsp;&nbsp; <span style="font-family: monospace;"><big>java Main smallSLDDt.dot SLDDp</big></span><br>
+<span style="font-family: monospace;">&nbsp;&nbsp;&nbsp; </span><br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; The first line compile the small.xml file (additive
+type file) with MCS-Inv heuristic. this file is necessarily compiled in
+SLDD+, and then transformed in SLDDt and saved in smallSLDDt.dot. the
+second line load this file and translate it in SLDD+ without saving it.<br>&nbsp;
+<br>
+<br>
+<h2><span style="font-weight: bold;">More details on arguments</span> :</h2>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Compilation</span> :<span style="font-family: monospace;"></span><br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">arg1</span></span> : this file must be in the same file than this program (or you must enter the full adress)<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">arg2</span></span>
+: say if constraints are additives (ex : WCSP) or multipicatives (ex : bayesian network).<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">arg3</span></span> : only an integer is accepted. <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">arg4</span></span>
+: this fonction will automaticly compilled into SLDD+ or SLDDt, and then translated into this format.<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">arg5</span></span> : ras<br>
+&nbsp;&nbsp;&nbsp; ---<br>
+<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp; Chargement</span> :<span style="font-family: monospace;"></span><br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">arg1</span></span> : see arg1 (compilation)<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">arg2</span></span> : see arg4 (compilation)<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">arg3</span></span> : see arg5 (compilation)<br><br>
+<br>
+<h2>File format :<br>
+</h2>
+&nbsp;&nbsp;<span style="font-weight: bold;"> input xml files</span><span style="font-weight: bold;"></span> : see <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; -Olivier Roussel and Christophe
+Lecoutre. XML Representation of Constraint Networks : Format XCSP
+2.1.Technical report, CoRR abs/0902.2362, feb 2009.<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; -Fabio Gagliardi Cozman.
+JavaBayes Version 0.347, Bayesian Networks in Java, User Manual.
+Technical report, dec 2002. Benchmarks at http
+://sites.poli.usp.br/pmr/ltd/Software/javabayes/Home/node3.html.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">output dot files </span><span style="font-weight: bold;"></span>:<br>&nbsp;&nbsp;&nbsp;
+This format use Graphviz dot formalism, so diagram can be visualised
+with this tool. Please note than only files generated by this compiler
+can be read by this compiler. every modifications can impede lecture of
+this file. &nbsp;&nbsp; &nbsp;&nbsp; <br>
+<br>
+<br>
+<h2>Contact :</h2>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  Nicolas.Schmidt@irit.fr<br>
+<br>
+
+
+</div></body></html>

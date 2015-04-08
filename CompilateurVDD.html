@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr"><head><title></title>
+
+
+
+
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">
+  body
+  {
+    background: #fff;
+    padding: 10px 0;
+    margin: 0;
+    min-height: 100%;
+  }
+  #wrapper
+  {
+    padding: 0 10px;
+    margin: 0 auto;
+    width: 970px;
+    border-left: 1px solid grey;
+    border-right: 1px solid grey;
+    background: #CFCFCF;
+    position: relative;
+    height: 100%;
+  }
+  h1
+  {
+    padding-top: 0;
+    margin-top: 0;
+  }
+</style></head><body>
+<div id="wrapper">
+<div style="text-align: right;">
+<h2><a href="CompilateurVDD_eng.html">&gt;English&lt;</a></h2>
+</div>
+<span style="text-decoration: underline;"></span>
+<h1><span style="text-decoration: underline;">Programme de Compilation de VDD<br>
+</span></h1>
+
+<br>
+<a href="./sources.tar">&gt;Téléchargement du programme&lt;</a><br>
+<a href="benchmarks.tar">&gt;Téléchargement des benchmarks&lt;</a><br>
+<br>
+<h2>Utilisation du compilateur :<br>
+</h2>
+<br>
+<span style="font-weight: bold;">Compilation</span> :<span style="font-family: monospace;"> <big>&nbsp;&nbsp; javac Main.java<br>
+</big></span>ou&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  <span style="font-family: mon;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </span><span style="font-family: monospace;"><big>javac -cp . Main.java</big></span>  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <br>
+<br>
+<br>
+<span style="font-weight: bold;">Usage</span> :<span style="font-family: monospace;"> <big>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; java Main [args]<br>
+</big></span>ou&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  <span style="font-family: mon;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </span><span style="font-family: monospace;"><big>java -cp . Main [args]</big></span>  &nbsp;&nbsp;  <br>
+<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">arg1</span></span> : nom_fichier.xml (le nom du fichier a compiler)<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">arg2</span></span> : type de fichier : "plus" ou "time" (aussi acceptés "p" "t" "+")<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">arg3</span></span> : numero d'heuristique, avec 1:MCF, 2:Band-Width, 3:MCS-Inv, 4:Force, 5:MCS+1<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">arg4</span></span> : forme finale : "AADD", "SLDDp", "SLDDt"<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; (<span style="font-family: monospace;"><span style="font-family: mon;">arg5</span></span> : nom_fichier_sauvegarde.dot)<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; (<span style="font-family: monospace;"><span style="font-family: mon;">arg6</span></span> : Garder les noeuds bégayant : "NoSkip")<br>
+<br>
+<br>
+<h2><span style="font-weight: bold;">Exemples d'utilisation</span> :</h2>
+
+&nbsp;&nbsp; <span style="font-family: monospace;"><big>java Main small + 3 AADD smallAADD NoSkip</big></span><br>
+<span style="font-family: monospace;">&nbsp;&nbsp;&nbsp; </span><br>&nbsp;&nbsp;&nbsp;
+Cette commande compile le fichier small.xml de
+type additif avec l'heuristique MCS-inv. la compilation est
+obligatoirement faite en SLDD+, puis la fonction est traduite en AADD
+et
+est sauvegardé aux formats smallAADD.dot et smallAADD.xml. Les Noeuds
+bégayant (i.e. les noeuds normalement supprimés lors de la
+normalisation car non contraints) sont conservés<br>
+<br>&nbsp;
+<br>
+<br>
+<h2><span style="font-weight: bold;">Details sur les arguments</span> :</h2>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Compilation</span> :<span style="font-family: monospace;"></span><br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">arg1</span></span> : le nom du fichier doit etre dans le meme dossier que le programe, ou l'adresse doit etre entree explicitement.<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">arg2</span></span>
+: indique si les contraintes sont de types additives (par exemple
+contrintes de prix) ou multiplicatives (par exemple probabilité). si
+elles sont de type additives, le fichier d'entree doit etre de type
+WCSP. si elles sont de type multiplicatif, le fichier d'entree doit
+etre de type BIF-XML.<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">arg3</span></span> : seul un entier est accepté. <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">arg4</span></span>
+: la fonction sera obligatoirement compilee en SLDDp ou SLDDt (suivant
+le type de contraintes). il pourra cependant etre transphormé apres
+compilation<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">arg5</span></span> : ras<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">arg6</span></span> : Les noeuds bégayant sont conservé. Toutes les variables seront rencontré une fois quelque soit le chemin.<br>
+<br>
+<h2>format de fichier :</h2>
+&nbsp;&nbsp;<span style="font-weight: bold;"> Fichier d'en</span><span style="font-weight: bold;"></span><span style="font-weight: bold;">trée XML</span> : voir <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; -Olivier Roussel and Christophe
+Lecoutre. XML Representation of Constraint Networks : Format XCSP
+2.1.Technical report, CoRR abs/0902.2362, feb 2009.<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; -Fabio Gagliardi Cozman.
+JavaBayes Version 0.347, Bayesian Networks in Java, User Manual.
+Technical report, dec 2002. Benchmarks at http
+://sites.poli.usp.br/pmr/ltd/Software/javabayes/Home/node3.html.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Format de sortie </span><span style="font-weight: bold;"></span>:<br>
+
+&nbsp; <span style="font-weight: bold;"></span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; .dot : le format de sortie utilise le
+formalisme Graphviz dot. ainsi les diagrames peuvent etre visualise
+grace a cette outil (deconseille pour les graphs de plusieurs milliers
+de neuds). Ce format etant incomplet pour nos besoin, des information
+sont ajouté commenté.<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; .xml : représentation xml du graphe.<br>
+<br>
+<br>
+<h2>Contact :</h2>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  Nicolas.Schmidt@irit.fr<br>
+<br>
+
+</div></body></html>

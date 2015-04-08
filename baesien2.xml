@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<instance>
+<presentation maxConstraintArity="3" format="XCSP 2.1" type="WCSP"/>
+
+<domains nbDomains="2">
+<domain name="D0" nbValues="2">0 1</domain>
+<domain name="D1" nbValues="3">0 1 2</domain>
+</domains>
+
+<variables nbVariables="4">
+<variable name="A" domain="D0"/>
+<variable name="B" domain="D1"/>
+<variable name="D" domain="D0"/>
+<variable name="E" domain="D1"/>
+</variables>
+
+<relations nbRelations="4">
+<relation name="R0" arity="1" nbTuples="2" semantics="soft" defaultCost="0">50:0|1</relation>
+<relation name="R1" arity="2" nbTuples="6" semantics="soft" defaultCost="0">20:1 0|1 1|0 2|40:0 0|0 1|60:1 2</relation>
+<relation name="R2" arity="2" nbTuples="4" semantics="soft" defaultCost="0">30:1 0|0 1|70:0 0|1 1</relation>
+<relation name="R4" arity="3" nbTuples="18" semantics="soft" defaultCost="0">80:0 0 1|2 2 1|1 1 1|10:0 1 1|1 0 1|1 2 1|2 1 1|0 2 1|2 0 1|80:0 0 0|2 2 0|1 1 0|10:0 1 0|1 0 0|1 2 0|2 1 0|0 2 0|2 0 0</relation>
+</relations>
+
+<constraints nbConstraints="4" maximalCost="0">
+<constraint name="C0" arity="1" scope="A" reference="R0"/>
+<constraint name="C1" arity="2" scope="A B" reference="R1"/>
+<constraint name="C2" arity="2" scope="A D" reference="R2"/>
+<constraint name="C4" arity="3" scope="E B D" reference="R4"/>
+</constraints>
+</instance>
