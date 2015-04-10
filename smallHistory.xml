@@ -137,6 +137,9 @@
 <domain name="Dv46" nbValues="5">
  0 1 2 3 7
 </domain>
+<domain name="Dv93" nbValues="20">
+ 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 20 21 31 32
+</domain>
 <domain name="Dv51" nbValues="4">
  0 1 2 3 
 </domain>
@@ -145,9 +148,6 @@
 </domain>
 <domain name="Dv53" nbValues="2">
  0 1 
-</domain>
-<domain name="Dv93" nbValues="20">
- 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 20 21 31 32
 </domain>
 </domains>
 
@@ -197,10 +197,10 @@
 <variable name="v44" domain="Dv44"/>
 <variable name="v45" domain="Dv45"/>
 <variable name="v46" domain="Dv46"/>
+<variable name="v93" domain="Dv93"/>
 <variable name="v51" domain="Dv51"/>
 <variable name="v52" domain="Dv52"/>
 <variable name="v53" domain="Dv53"/>
-<variable name="v93" domain="Dv93"/>
 </variables>
 
  <relations nbRelations="1">
