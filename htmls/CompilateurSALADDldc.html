@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr"><head><title>SALADD</title>
+
+  
+
+  
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  
+  <style type="text/css">
+  body
+  {
+    background: #fff;
+    padding: 10px 0;
+    margin: 0;
+    min-height: 100%;
+  }
+  #wrapper
+  {
+    padding: 0 10px;
+    margin: 0 auto;
+    width: 970px;
+    border-left: 1px solid grey;
+    border-right: 1px solid grey;
+    background: #CFCFCF;
+    position: relative;
+    height: 100%;
+  }
+  h1
+  {
+    padding-top: 0;
+    margin-top: 0;
+  }
+  </style></head><body>
+<div id="wrapper">
+<div style="text-align: right;">
+<h2><a href="./CompilateurSALADD.html">retour</a></h2>
+</div>
+<span style="text-decoration: underline;"></span>
+<h1><span style="text-decoration: underline;">Programme SALADD de Compilation
+de VDD<br>
+</span></h1>
+<br>
+<a href="./sourcesSALADD.tar">&gt;Téléchargement du programme&lt;</a><br>
+<a href="./benchmarks.tar">&gt;Téléchargement des benchmarks&lt;</a><br>
+<br>
+<h2>Utilisation du compilateur :<br>
+</h2>
+<br>
+<span style="font-weight: bold; text-decoration: underline;">Compilation</span><span style="text-decoration: underline;"> :</span><span style="font-family: monospace;"><span style="text-decoration: underline;"> </span><big>&nbsp;&nbsp; javac
+Compilation.java<br>
+</big></span>ou&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: mon;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </span><span style="font-family: monospace;"><big>javac -cp . Compilation.java</big></span>
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; <br>
+<br>
+<br>
+<span style="font-weight: bold; text-decoration: underline;">Execution </span><span style="text-decoration: underline;">:</span><span style="font-family: monospace;"><big> &nbsp;&nbsp;&nbsp; java
+Compilation fichier_a_compiler.xml -t=[type] [options]<br>
+</big></span>ou&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: mon;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-family: monospace;"><big>java -cp . Compilation
+fichier_a_compiler.xml -t=[type] [options]</big></span> &nbsp;&nbsp; <br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold; text-decoration: underline;">obligatoire :</span><br>
+&nbsp;<span style="font-family: monospace;"><span style="font-family: mon;">&nbsp;&nbsp;&nbsp; fichier_a_compiler.xml</span></span><br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; le nom du ou
+des fichiers à compiler<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Plusieurs noms
+de fichiers d'un même problème à compiler peuvent être entrés, séparés
+par des espaces. Si plusieurs fichiers, tous doivent porter sur le même
+ensemble de variable.<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">-t=[type]</span></span>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; type de
+fichier : [type] = "plus" ou "time" (aussi acceptés "p" "t" "+")<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Indique la
+nature additive ou multiplicative des valuations du fichier à compiler.<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold; text-decoration: underline;">options :</span><br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">-h=?</span></span><br>
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; Numero d'heuristique
+d'ordonnancement des varialbes; '1':MCF, '2':Band-Width, '3':MCS-Inv,
+'4':MCS+1, '5':Force, '0':ordre naturel (ordre du fichier CSP),
+'-1':ordre aléatoire.<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">-hcon=?<br>
+&nbsp; &nbsp; &nbsp; &nbsp;</span></span> Numero d'heuristique
+d'ordonnancement des contraintes; '1':BCF, '2':tri par difficulté,
+'3':tri par dureté, '0' : ordre naturel, '-1' : ordre aléatoire,
+'-2':ordre naturel inversé<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">-ff=[forme]
+<br>
+</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Forme finale : [forme] = "AADD", "SLDDp", "SLDDt" ou "ADD"<br>
+<span style="font-family: monospace;"><span style="font-family: mon;">&nbsp;&nbsp;&nbsp;&nbsp;
+-save=[nom_fichier_sauvegarde.dot]</span></span> <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Nom du fichier de sortie (pas l'option -&gt; pas de sortie)<br>
+<span style="font-family: monospace;"><span style="font-family: mon;">&nbsp;&nbsp;&nbsp;&nbsp;
+-NoSkip</span></span> <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Garder les
+noeuds bégayants<br>
+<span style="font-family: monospace;"><span style="font-family: mon;">&nbsp;&nbsp;&nbsp;&nbsp;
+-text=?</span></span> <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Quantité de
+texte à afficher. ?= de '0' à '3',&nbsp; 0 étant le minimum de texte
+affiché possible, 3 le maximum.<br>
+<br>
+<br>
+<h2>Chargement d'un fichier compilé :</h2>
+<br>
+<span style="font-weight: bold; text-decoration: underline;">Compilation</span><span style="text-decoration: underline;"> :</span><span style="font-family: monospace;"><span style="text-decoration: underline;"> </span><big>&nbsp;&nbsp; javac
+Read.java<br>
+</big></span>ou&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: mon;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </span><span style="font-family: monospace;"><big>javac -cp . Read.java</big></span>
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; <br>
+<br>
+<br>
+<span style="font-weight: bold; text-decoration: underline;">Execution </span><span style="text-decoration: underline;">:</span><span style="font-family: monospace;"><big> &nbsp;&nbsp;&nbsp; java Read
+-read=nom_fichier_a_lire.dot [options]<br>
+</big></span>ou&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: mon;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-family: monospace;"><big>java -cp . Read
+-read=nom_fichier_a_lire.dot [options]</big></span><br>
+&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold; text-decoration: underline;">obligatoire :</span><br>
+&nbsp;<span style="font-family: monospace;"><span style="font-family: mon;">&nbsp;&nbsp;&nbsp;
+-read=[nom_fichier_a_lire.dot]</span></span><br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; fichier à
+lire, extention .dot.<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold; text-decoration: underline;">options :</span><br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">-ff=[forme]
+<br>
+</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Forme finale : [forme] = "AADD", "SLDDp", "SLDDt" ou "ADD"<br>
+<span style="font-family: monospace;"><span style="font-family: mon;">&nbsp;&nbsp;&nbsp;&nbsp;
+-save=[nom_fichier_sauvegarde.dot]</span></span> <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Nom du fichier de sortie (pas l'option -&gt; pas de sortie)<br>
+<span style="font-family: monospace;"><span style="font-family: mon;">&nbsp;&nbsp;&nbsp;&nbsp;
+-NoSkip</span></span> <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Garder les
+noeuds bégayants<br>
+<span style="font-family: monospace;"><span style="font-family: mon;">&nbsp;&nbsp;&nbsp;&nbsp;
+-text=?</span></span> <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Quantité de
+texte à afficher. ?= de '0' à '3',&nbsp; 0 étant le minimum de texte
+affiché possible, 3 le maximum.<br>
+<br>
+<br>
+<h2><span style="font-weight: bold;">Exemples d'utilisation</span> :</h2>
+&nbsp;&nbsp; <span style="font-family: monospace;"><big>&nbsp;&nbsp;&nbsp;
+java Compilation small.xml -t=+</big></span><br>
+<span style="font-family: monospace;">&nbsp;&nbsp;&nbsp; </span><br>
+&nbsp;&nbsp;&nbsp; compilation du fichier small.xml de type additif.
+(par défaut : heuristique utilisé : MCS; heuristique d'ordonnancement
+de contraintes utilisé : ordre naturel; forme finale : forme de
+compilation; pas de sortie; noeuds bégayants suprimmés; niveau
+d'affichage du texte : 1).<br>
+<br>
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; <span style="font-family: monospace;"><big>java Compilation medium.xml
+mediumPrices.xml -t=+ -h=4 -hcon=2 -ff=SLDDp -save=mediumSLDDp.dot
+-NoSkip -text=0<br>
+&nbsp;&nbsp;&nbsp;&nbsp; java Read mediumSLDDp.dot -ff=ADD -text=3</big></span><br>
+<br>
+&nbsp; la premiere ligne compile le fichier medium.xml et le fichier
+associé mediumPrices.xml (qui contient les contraintes valuées). le
+problème est de type additif, compilé avec l'heuristique
+d'ordonnancement de variable MCS+1 et l'heuristique d'ordonnancement de
+contrainte 2 (tri par difficulté). la compilation est obligatoirement
+faite en SLDD+, puis la fonction n'est pas traduite. La forme compilée
+est sauvegardée dans mediumSLDDp.dot. Les noeuds bégayants sont gardés
+et aucun texte ne sera affiché durant la compilation.<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; La 2eme ligne charge le premier
+fichier puis traduit la fonction en ADD mais ne la sauvegarde pas.
+Cependant tous les détails textuels sont affichés.<br>
+<br>
+<h2><span style="font-weight: bold;">Details sur les arguments</span> :</h2>
+<span style="text-decoration: underline;">&nbsp;&nbsp;&nbsp; </span><span style="font-weight: bold; text-decoration: underline;">Compilation</span><span style="text-decoration: underline;"> :</span><span style="font-family: monospace; text-decoration: underline;"></span><br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">fichier_a_compiler</span></span>
+: le nom du fichier doit etre dans le meme dossier que le programme, ou
+l'adresse doit etre entree explicitement.<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">autre_fichier_a_compiler</span></span>
+: d'autres fichiers peuvent être ajoutés au premier, ils doivent porter
+sur un sous ensemble de variables définies dans le premier fichier.<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">-t=[type]</span></span>
+: indique si les contraintes sont de types additives (par exemple
+contrintes de prix) ou multiplicatives (par exemple probabilité). si
+elles sont de type additives, le fichier d'entrée doit être de type
+WCSP. si elles sont de type multiplicatif, le fichier d'entrée doit
+être de type BIF-XML.<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">-h=?</span></span>
+: seul un entier est accepté (à la place du '?').<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">-hcon=?</span></span>
+: seul un entier est accepté (à la place du '?').<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">-ff=[forme]</span></span>
+: la fonction sera obligatoirement compilée en SLDDp ou SLDDt (suivant
+le type de contraintes). il pourra cependant etre transphormé apràs
+compilation<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">-save=[nom_fichier_sauvegarde.dot]</span></span>
+: ras<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">-NoSkip</span></span>
+: Les noeuds bégayants sont conservés. Toutes les variables seront
+rencontrées une fois quelque soit le chemin.<span style="font-family: monospace;"><span style="font-family: mon;"><br>
+&nbsp;&nbsp;&nbsp;&nbsp; -text=?</span></span> : quatres niveaux
+d'affichage de texte : <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="font-family: monospace;"><span style="font-family: mon;">-text=0</span></span>
+: aucun texte sauf erreure de compilation<br>
+<span style="font-family: monospace;"><span style="font-family: mon;">&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; -text=1</span></span> : affichage
+de taille de la forme compilée et transformée<br>
+<span style="font-family: monospace;"><span style="font-family: mon;">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; -text=2</span></span>
+: même chose que précédemment + détails et progression de la
+compilation <br>
+<span style="font-family: monospace;"><span style="font-family: mon;">&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; -text=3</span></span> : même
+chose que précédemment + affichage des ordres des variables et des
+contraintes.<br>
+<br>
+<br>
+<h2>format de fichier :</h2>
+&nbsp;&nbsp;<span style="font-weight: bold;"> Fichier d'en</span><span style="font-weight: bold;"></span><span style="font-weight: bold;">trée
+XML</span> : voir <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; -Olivier Roussel and Christophe
+Lecoutre. XML Representation of Constraint Networks : Format XCSP
+2.1.Technical report, CoRR abs/0902.2362, feb 2009.<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; -Fabio Gagliardi Cozman.
+JavaBayes Version 0.347, Bayesian Networks in Java, User Manual.
+Technical report, dec 2002. Benchmarks at http
+://sites.poli.usp.br/pmr/ltd/Software/javabayes/Home/node3.html.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Format de sortie </span><span style="font-weight: bold;"></span>:<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Le format de sortie utilise le
+formalisme Graphviz dot. ainsi les diagrames peuvent être visualisés
+grâce a cette outil (déconseillé pour les graphs de plusieurs milliers
+de noeuds). Ce format étant incomplet pour nos besoin, des informations
+sont ajoutés.<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Notez que seul les fichiers
+générés par ce compilateur peuvent être lu par ce compilateur. toute
+modification à la main peut géner la relecture du fichier.<br>
+<br>
+<br>
+<br>
+<br>
+<h2>Contact :</h2>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Nicolas Schmidt :
+Nac.s&nbsp;&nbsp; *at*&nbsp;&nbsp; free.fr<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Hélène fargier :
+fargier&nbsp;&nbsp;&nbsp; *at*&nbsp;&nbsp; irit.fr<br>
+<br>
+</div>
+
+</body></html>
